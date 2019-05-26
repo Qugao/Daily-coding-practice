@@ -1,3 +1,4 @@
+import javax.swing.tree.TreeNode;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -8,6 +9,15 @@ public class CodingIsFun {
         ListNode next;
         ListNode(int x) { val = x; }
     }
+
+    public static class TreeNode {
+        public int key;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int key) {
+          this.key = key;
+        }
+  }
     //lc #215
     public static int findKthLargest(int[] nums, int k) {
         if (nums.length <= 1) {
@@ -64,10 +74,43 @@ public class CodingIsFun {
         }
     }
 
-
+    // lc #20
     public static boolean isValid(String s) {
+        if (s.isEmpty()) {
+            return true;
+        }
 
-        return true;
+        Deque<Character> stack = new ArrayDeque<>();
+        char[] input = s.toCharArray();
+
+        stack.push(input[0]);
+
+        for (int i = 1; i < input.length; i++) {
+            if (input[i] == '}' || input[i] == ']' || input[i] == ')') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                if (input[i] == '}' && stack.peekFirst() != '{') {
+                    return false;
+                }
+
+                if (input[i] == ']' && stack.peekFirst() != '[') {
+                    return false;
+                }
+
+                if (input[i] == ')' && stack.peekFirst() != '(') {
+                    return false;
+                }
+                stack.pop();
+            } else {
+                stack.offerFirst(input[i]);
+            }
+        }
+
+        if (stack.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     // lc #347
@@ -135,15 +178,106 @@ public class CodingIsFun {
         return dummy.next;
     }
 
+    public boolean isCompleted(TreeNode root) {
+        // Write your solution here
+        if (root == null) {
+            return true;
+        }
+
+        Queue<TreeNode> que = new LinkedList<TreeNode>();
+        boolean flag = false;
+        que.offer(root);
+
+        while (!que.isEmpty()) {
+            TreeNode cur = que.poll();
+
+            if (cur.left == null) {
+                flag = true;
+            } else if (flag) {
+                return false;
+            } else {
+                que.offer(cur.left);
+            }
+
+            if (cur.right == null) {
+                flag = true;
+            } else if (flag) {
+                return false;
+            } else {
+                que.offer(cur.right);
+            }
+        }
+        return true;
+    }
+
+
+
+    public static int[] sort(int[] arr) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        int[] a = new int[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            minHeap.add(arr[i]);
+        }
+
+        for (int j = 0; j < arr.length; j++) {
+            a[j] = minHeap.poll();
+        }
+
+        return a;
+    }
+
+    public static int strstr(String large, String small) {
+        // Write your solution here
+        if (large.length() < small.length()) {
+            return -1;
+        }
+        if (small.isEmpty()) {
+            return 0;
+        }
+
+        char[] smallChar = small.toCharArray();
+        char[] largeChar = large.toCharArray();
+
+        for (int i = 0; i <= largeChar.length - smallChar.length; i++) {
+            if (equals(largeChar, smallChar, i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public String rightShift(String input, int n) {
+        // Write your solution here
+        char[] arr = input.toCharArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (n != 0) {
+
+            }
+        }
+    }
+
+    private static boolean equals(char[] large, char[] small, int i) {
+        for (int j = 0; j < small.length; j++) {
+            if (large[j + i] != small[j]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         char[] a = {'h','e','l','l','o'};
         reverseString(a);
         System.out.println(Arrays.toString(a));
 
-        String b = "{[]}";
+        String b = "";
         System.out.println(isValid(b));
 
-        int[] c = {1,1,1,2,2,3};
-        System.out.println(topKFrequent(c, 2));
+        String c = "abbaabbab";
+        String d = "bbab";
+        System.out.println(strstr(c, d));
+
     }
 }
