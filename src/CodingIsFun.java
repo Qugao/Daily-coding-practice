@@ -247,16 +247,6 @@ public class CodingIsFun {
         return -1;
     }
 
-    public String rightShift(String input, int n) {
-        // Write your solution here
-        char[] arr = input.toCharArray();
-
-        for (int i = 0; i < arr.length; i++) {
-            if (n != 0) {
-
-            }
-        }
-    }
 
     private static boolean equals(char[] large, char[] small, int i) {
         for (int j = 0; j < small.length; j++) {
@@ -265,6 +255,220 @@ public class CodingIsFun {
             }
         }
         return true;
+    }
+
+    public static String longestCommon(String source, String target) {
+        // Write your solution here
+        int end = 0;
+        boolean flag = false;
+        for (int i = 0; i < source.length(); i++) {
+            if (end <= target.length() - 1 && source.charAt(i) == target.charAt(end)) {
+                end++;
+                flag = true;
+            }
+        }
+        if (!flag) {
+            return "";
+        } else {
+            return target.substring(0, end);
+        }
+    }
+
+    public static int maxProfit(int[] prices) {
+        if (prices.length <= 1) {
+            return 0;
+        }
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < min) {
+                min = prices[i];
+            } else if (prices[i] - min > max) {
+                max = prices[i] - min;
+            }
+        }
+        return max;
+    }
+
+    public static int romanToInt(String s) {
+        char[] arr = s.toCharArray();
+        int[] nums = {1, 5, 10, 50, 100, 500, 1000};
+        char[] roms = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+        int[] temp = new int[s.length() + 1];
+        int result = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < roms.length; j++) {
+                if (arr[i] == roms[j]) {
+                    temp[i] = nums[j];
+                }
+            }
+        }
+
+        System.out.println(Arrays.toString(temp));
+
+        for (int k = 0; k < temp.length - 1; k++) {
+            if (temp[k] >= temp[k + 1]) {
+                result += temp[k];
+            } else {
+                result += temp[k + 1] - temp[k];
+                k++;
+            }
+        }
+
+        return result;
+    }
+    public static void printNode(ListNode head) {
+        System.out.print("[");
+        while (head != null) {
+           System.out.print(" " + head.val);
+           head = head.next;
+        }
+        System.out.print(" ]");
+    }
+
+    public static int getInt(ListNode head) {
+        StringBuilder st = new StringBuilder();
+
+        while (head != null) {
+            st.append(head.val);
+            head = head.next;
+        }
+
+        return Integer.parseInt(st.toString());
+
+    }
+
+    public static ListNode getNode(int a) {
+        String temp = Integer.toString(a);
+        char[] arr = temp.toCharArray();
+        ListNode head = new ListNode(0);
+
+        for (int i = 0; i < arr.length; i++) {
+            head = insert(head, Character.getNumericValue(arr[i]));
+        }
+
+        return head.next;
+    }
+
+    public static ListNode insert(ListNode head, int val) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode cur = head;
+        ListNode newNode = new ListNode(val);
+
+        while (cur.next != null) {
+            cur = cur.next;
+        }
+
+        newNode.next = cur.next;
+        cur.next = newNode;
+
+        return dummy.next;
+    }
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        l1 = reverse(l1);
+        l2 = reverse(l2);
+
+        int a = getInt(l1);
+        int b = getInt(l2);
+
+        ListNode result = getNode(a + b);
+        result = reverse(result);
+
+        return result;
+    }
+
+    public static ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) {
+           return head;
+        }
+
+        ListNode newHead = reverse(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
+    }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        int j = 0;
+        int i = m;
+
+        while (i < nums1.length && j < nums2.length) {
+            nums1[i] = nums2[j];
+            i++;
+            j++;
+        }
+
+      //  System.out.println(Arrays.toString(nums1));
+    }
+
+    public static ListNode mergeKLists(ListNode[] lists) {
+        if (lists.length == 0) {
+            return null;
+        }
+
+        ListNode dummy = new ListNode(0);
+        ListNode cur = dummy;
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                if (o1.val == o2.val) {
+                    return 0;
+                }
+                return o1.val < o2.val ? -1 : 1;
+            }
+        });
+
+        for (ListNode nodes : lists) {
+            if (nodes != null) {
+                pq.offer(nodes);
+            }
+        }
+
+        while (!pq.isEmpty()) {
+            cur.next = pq.poll();
+
+            if (cur.next.next != null) {
+                pq.offer(cur.next.next);
+            }
+            cur = cur.next;
+        }
+
+        return dummy.next;
+    }
+
+    public static ListNode singleMerger(ListNode a, ListNode b) {
+        ListNode dummy = new ListNode(0);
+       // dummy.next = a;
+        ListNode cur = dummy;
+
+        while (a != null && b != null) {
+           // System.out.println(1);
+            if (a.val < b.val) {
+                cur.next = a;
+                a = a.next;
+            } else {
+                cur.next = b;
+                b = b.next;
+            }
+            cur = cur.next;
+        }
+
+        if (a != null) {
+            cur.next = a;
+        } else {
+            cur.next = b;
+        }
+
+        return dummy.next;
+    }
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        
     }
 
     public static void main(String[] args) {
@@ -276,8 +480,25 @@ public class CodingIsFun {
         System.out.println(isValid(b));
 
         String c = "abbaabbab";
-        String d = "bbab";
-        System.out.println(strstr(c, d));
+        String d = "III";
+        System.out.println(romanToInt(d));
+
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(4);
+        l1.next.next = new ListNode(5);
+        l1.next.next.next = null;
+
+        ListNode l2 = new ListNode(1);
+        l2.next = new ListNode(3);
+        l2.next.next = new ListNode(4);
+        l2.next.next.next = null;
+
+
+        printNode(singleMerger(l1, l2));
+
+        int[] a1 = {1,2,3,8,0,0};
+        int[] b1 = {2, 5, 6};
+        merge(a1, 3, b1, 3);
 
     }
 }
