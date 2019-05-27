@@ -467,38 +467,84 @@ public class CodingIsFun {
         return dummy.next;
     }
 
-    public List<List<Integer>> threeSum(int[] nums) {
-        
+    public static List<List<Integer>> threeSum(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        List<List<Integer>> result = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
+
+        for (int j = 1; j < nums.length; j++) {
+            int tar = (nums[j - 1] + nums[j]) * -1;
+            if (map.containsValue(tar)) {
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                list.add(j - 1);
+                list.add(j);
+                list.add(map.get(tar));
+                result.add(list);
+            }
+        }
+        return result;
+    }
+
+    public static void heapSort(int[] array) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int i = 0; i < array.length; i++) {
+            minHeap.offer(array[i]);
+        }
+
+        int index = 0;
+        while (!minHeap.isEmpty()) {
+            array[index++] = minHeap.poll();
+        }
+
+    }
+
+    public static int numUniqueEmails(String[] emails) {
+        Set<String> set = new HashSet<>();
+        for (String email : emails) {
+            int a = email.indexOf('@');
+            String firstPart = email.substring(0, a);
+            String secondPart = email.substring(a, email.length());
+
+            if (firstPart.contains("+")) {
+                int breakPoint = firstPart.indexOf("+");
+                firstPart = firstPart.substring(0, breakPoint);
+            }
+
+            firstPart = firstPart.replaceAll("\\.", "");
+
+            set.add(firstPart + secondPart);
+        }
+
+        return set.size();
+    }
+
+    public static String licenseKeyFormatting(String S, int K) {
+        S = S.toUpperCase();
+        S = S.replaceAll("-","");
+
+        StringBuilder sb = new StringBuilder(S);
+        int i = S.length() - K;
+
+        while (i > 0) {
+            System.out.println(i);
+            sb.insert(i, '-');
+            i -= K;
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        char[] a = {'h','e','l','l','o'};
-        reverseString(a);
-        System.out.println(Arrays.toString(a));
 
-        String b = "";
-        System.out.println(isValid(b));
+        String[] emails = {"test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"};
+        numUniqueEmails(emails);
 
-        String c = "abbaabbab";
-        String d = "III";
-        System.out.println(romanToInt(d));
+        String s = "2-5g-3-J";
+        System.out.println(licenseKeyFormatting(s, 2));
 
-        ListNode l1 = new ListNode(1);
-        l1.next = new ListNode(4);
-        l1.next.next = new ListNode(5);
-        l1.next.next.next = null;
-
-        ListNode l2 = new ListNode(1);
-        l2.next = new ListNode(3);
-        l2.next.next = new ListNode(4);
-        l2.next.next.next = null;
-
-
-        printNode(singleMerger(l1, l2));
-
-        int[] a1 = {1,2,3,8,0,0};
-        int[] b1 = {2, 5, 6};
-        merge(a1, 3, b1, 3);
 
     }
 }
