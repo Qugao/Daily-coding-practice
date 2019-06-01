@@ -537,13 +537,25 @@ public class CodingIsFun {
         return sb.toString();
     }
 
+    public static int lengthOfLongestSubstring(String s) {
+        //StringBuilder sb = new StringBuilder();
+        Set<Character> set = new HashSet<>();
+        int longest = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (set.contains(s.charAt(i))) {
+                longest = longest > set.size() ? longest : set.size();
+                set.clear();
+            } else {
+                set.add(s.charAt(i));
+            }
+        }
+        return longest;
+    }
+
     public static void main(String[] args) {
-
-        String[] emails = {"test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"};
-        numUniqueEmails(emails);
-
-        String s = "2-5g-3-J";
-        System.out.println(licenseKeyFormatting(s, 2));
+        String s = "pwwkew";
+        System.out.println(lengthOfLongestSubstring(s));
 
 
     }
