@@ -1,3 +1,5 @@
+import org.omg.CORBA.INTERNAL;
+
 import javax.swing.tree.TreeNode;
 import java.lang.reflect.Array;
 import java.util.*;
@@ -537,26 +539,115 @@ public class CodingIsFun {
         return sb.toString();
     }
 
-    public static int lengthOfLongestSubstring(String s) {
-        //StringBuilder sb = new StringBuilder();
-        Set<Character> set = new HashSet<>();
-        int longest = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            if (set.contains(s.charAt(i))) {
-                longest = longest > set.size() ? longest : set.size();
-                set.clear();
-            } else {
-                set.add(s.charAt(i));
+    public static int lengthOfLIS(int[] nums) {
+        int[] dp = new int[nums.length];
+        int len = 0;
+        for (int num : nums) {
+            System.out.println("num: " + num);
+            int i = Arrays.binarySearch(dp, 0, len, num);
+            System.out.println("len: " + len);
+            System.out.println("i: " + i);
+            if (i < 0) {
+                i = -(i + 1);
             }
+            dp[i] = num;
+            System.out.println(Arrays.toString(dp));
+            if (i == len) {
+                len++;
+            }
+            System.out.println("-------------------");
         }
-        return longest;
+        return len;
+    }
+
+    public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int right = maxDepth(root.right);
+        int left = maxDepth(root.left);
+
+        return Math.max(right, left) + 1;
+    }
+
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return root;
+        }
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+    }
+
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if (t1 == null) {
+            t1 = t2;
+            return t2;
+        } else if (t2 == null) {
+            t2 = t1;
+            return t1;
+        }
+        Deque<TreeNode> a = new ArrayDeque<>();
+
+        TreeNode left = mergeTrees(t1.left, t2.left);
+        TreeNode rihgt = mergeTrees(t1.right, t2.right);
+
+        t1.key += t2.key;
+
+        return t1;
+    }
+
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if (nums.length == 0) {
+            return null;
+        }
+
+        TreeNode root = helper(nums, 0, nums.length - 1);
+        return root;
+    }
+
+    public TreeNode helper(int[] nums, int low, int high) {
+        if (low < high) {
+            return null;
+        }
+        int mid = (low + high) / 2 + 1;
+
+        TreeNode node = new TreeNode(nums[mid]);
+
+        node.left = helper(nums, 0, mid - 1);
+        node.right = helper(nums, mid + 1, nums.length - 1);
+
+        return node;
+    }
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+
+        if (p == null || q == null) {
+            return false;
+        }
+
+        if (p.key != q.key) {
+            return false;
+        }
+
+
+        boolean left = isSameTree(p.left, q.left);
+        boolean right = isSameTree(p.right, q.right);
+
+        return left && right;
     }
 
     public static void main(String[] args) {
-        String s = "pwwkew";
-        System.out.println(lengthOfLongestSubstring(s));
-
+        int[] a = {10,9,2,5,3,7,101,18};
+      //  System.out.println(lengthOfLIS(a));
 
     }
 }
