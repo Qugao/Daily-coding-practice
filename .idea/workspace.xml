@@ -5,6 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$ListNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$TreeNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CodingIsFun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodingIsFun.java" afterDir="false" />
     </list>
@@ -20,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CodingIsFun.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="545" column="30" selection-start-line="545" selection-start-column="30" selection-end-line="545" selection-end-column="30" />
+            <state relative-caret-position="220">
+              <caret line="659" column="8" selection-start-line="659" selection-start-column="8" selection-end-line="659" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,8 +54,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="535" />
-    <option name="y" value="140" />
+    <option name="x" value="792" />
+    <option name="y" value="102" />
     <option name="width" value="1411" />
     <option name="height" value="817" />
   </component>
@@ -66,7 +69,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559406323449" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559523823547" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
@@ -112,15 +115,16 @@
       <workItem from="1558745974685" duration="14639000" />
       <workItem from="1558887200373" duration="15316000" />
       <workItem from="1559184932806" duration="1256000" />
-      <workItem from="1559339621613" duration="2801000" />
+      <workItem from="1559339621613" duration="3238000" />
+      <workItem from="1559434792529" duration="9987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37154000" />
+    <option name="totallyTimeSpent" value="47578000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="535" y="140" width="1411" height="817" extended-state="0" />
+    <frame x="792" y="102" width="1411" height="817" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
@@ -132,7 +136,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23862068" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23862068" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -160,8 +164,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/CodingIsFun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="545" column="30" selection-start-line="545" selection-start-column="30" selection-end-line="545" selection-end-column="30" />
+        <state relative-caret-position="220">
+          <caret line="659" column="8" selection-start-line="659" selection-start-column="8" selection-end-line="659" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

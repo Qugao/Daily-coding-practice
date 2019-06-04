@@ -645,9 +645,49 @@ public class CodingIsFun {
         return left && right;
     }
 
+    // 0
+    //  if now - 1 != 0 || now + 1 != 0
+    //      add T
+    //  else
+    //      add F
+
+    // 0 1 1 1 1
+
+    public static int test(List<Integer> nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> tmp = nums;
+        for (int i = 0; i < nums.size(); i++) {
+            nums.set(i, 0);
+          //  tmp.set(i, 0);
+            for (int j = i + 1; j < nums.size(); j++) {
+                nums.set(j, 1);
+            }
+            list.add(nums);
+       //     nums = tmp;
+        }
+        System.out.println(list);
+        return 0;
+    }
+
+    public static void dfs(int[] nums, int index, int n, List<String> result, StringBuilder s) {
+        if (n == index) {
+            result.add(String.valueOf(s));
+        }
+
+        if (n < index) {
+
+        }
+    }
+
     public static void main(String[] args) {
         int[] a = {10,9,2,5,3,7,101,18};
       //  System.out.println(lengthOfLIS(a));
-
+        int[] b = {1,1,1,1,1};
+        List<Integer> c = new ArrayList<>();
+        for (int i = 0; i < b.length; i++) {
+            c.add(b[i]);
+        }
+        c.set(0, 0);
+        test(c);
     }
 }
