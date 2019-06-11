@@ -13,11 +13,11 @@ public class CodingIsFun {
     }
 
     public static class TreeNode {
-        public int key;
+        public int val;
         public TreeNode left;
         public TreeNode right;
-        public TreeNode(int key) {
-          this.key = key;
+        public TreeNode(int val) {
+          this.val = val;
         }
   }
     //lc #215
@@ -602,29 +602,6 @@ public class CodingIsFun {
         return t1;
     }
 
-    public TreeNode sortedArrayToBST(int[] nums) {
-        if (nums.length == 0) {
-            return null;
-        }
-
-        TreeNode root = helper(nums, 0, nums.length - 1);
-        return root;
-    }
-
-    public TreeNode helper(int[] nums, int low, int high) {
-        if (low < high) {
-            return null;
-        }
-        int mid = (low + high) / 2 + 1;
-
-        TreeNode node = new TreeNode(nums[mid]);
-
-        node.left = helper(nums, 0, mid - 1);
-        node.right = helper(nums, mid + 1, nums.length - 1);
-
-        return node;
-    }
-
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null) {
             return true;
@@ -645,39 +622,107 @@ public class CodingIsFun {
         return left && right;
     }
 
-    // 0
-    //  if now - 1 != 0 || now + 1 != 0
-    //      add T
-    //  else
-    //      add F
 
-    // 0 1 1 1 1
-
-    public static int test(List<Integer> nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        List<Integer> tmp = nums;
-        for (int i = 0; i < nums.size(); i++) {
-            nums.set(i, 0);
-          //  tmp.set(i, 0);
-            for (int j = i + 1; j < nums.size(); j++) {
-                nums.set(j, 1);
-            }
-            list.add(nums);
-       //     nums = tmp;
-        }
-        System.out.println(list);
-        return 0;
-    }
-
-    public static void dfs(int[] nums, int index, int n, List<String> result, StringBuilder s) {
-        if (n == index) {
-            result.add(String.valueOf(s));
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode one, TreeNode two) {
+        if (root == null) {
+            return root;
         }
 
-        if (n < index) {
-
+        if (one.key < root.key && two.key < root.key) {
+            return lowestCommonAncestor(root.left, one, two);
+        } else if (one.key > root.key && two.key > root.key) {
+            return lowestCommonAncestor(root.right, one, two);
+        } else {
+            return root;
         }
     }
+
+
+    public int h(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int left = h(root.left);
+
+        if (left == -1) {
+            return -1;
+        }
+
+        int right = h(root.right);
+
+        if (right == -1) {
+            return -1;
+        }
+
+        if (Math.abs(left - right) > 1) {
+            return -1;
+        }
+
+        return Math.max(left, right) + 1;
+    }
+
+    public TreeNode constructMaximumBinaryTree(int[] nums) {
+        if (nums.length == 0) {
+            return null;
+        }
+
+        if (nums.length == 1) {
+            return new TreeNode(nums[0]);
+        }
+
+        return helper(nums, 0, nums.length - 1);
+    }
+
+    public TreeNode helper(int[] nums, int left, int right) {
+        int mid = (left + right) / 2 + 1;
+        TreeNode root = new TreeNode(max(nums, left, right));
+
+        root.left = helper(nums, left, mid);
+        root.right = helper(nums, mid + 1, right);
+        return root;
+    }
+
+    public int max(int[] nums, int left, int right) {
+        int max = 0;
+        for (int i = left; i < right; i++) {
+            max = Math.max(nums[i], max);
+        }
+        return max;
+    }
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder.length == 0) {
+            return null;
+        }
+        if (preorder.length == 1) {
+            new TreeNode(preorder[0]);
+        }
+
+
+
+
+    }
+
+    public boolean isValidBST(TreeNode root, int low, int high) {
+        if (root == null) {
+            return false;
+        }
+        List<List<Integer>> a = new LinkedList<>();
+        a.add
+
+        if (root.right.val < root.val) {
+            return false;
+        }
+
+        if (root.left.val > root.val) {
+            return false;
+        }
+
+       return isValidBST(root.left, low, root.val - 1) && isValidBST(root.right, root.val + 1, high);
+
+    }
+
 
     public static void main(String[] args) {
         int[] a = {10,9,2,5,3,7,101,18};
@@ -688,6 +733,5 @@ public class CodingIsFun {
             c.add(b[i]);
         }
         c.set(0, 0);
-        test(c);
     }
 }

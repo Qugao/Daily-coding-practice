@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c687f4ff-6dac-4f71-aedc-8bf2909c0e0c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$ListNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CodingIsFun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodingIsFun.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CodingIsFun.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="659" column="8" selection-start-line="659" selection-start-column="8" selection-end-line="659" selection-end-column="8" />
+            <state relative-caret-position="243">
+              <caret line="707" column="27" selection-start-line="707" selection-start-column="27" selection-end-line="707" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,8 +48,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="792" />
-    <option name="y" value="102" />
+    <option name="x" value="1085" />
+    <option name="y" value="26" />
     <option name="width" value="1411" />
     <option name="height" value="817" />
   </component>
@@ -117,14 +111,17 @@
       <workItem from="1559184932806" duration="1256000" />
       <workItem from="1559339621613" duration="3238000" />
       <workItem from="1559434792529" duration="9987000" />
+      <workItem from="1559673649960" duration="1433000" />
+      <workItem from="1559683252693" duration="2824000" />
+      <workItem from="1560207595524" duration="3251000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47578000" />
+    <option name="totallyTimeSpent" value="55086000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="792" y="102" width="1411" height="817" extended-state="0" />
+    <frame x="1085" y="26" width="1411" height="817" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
@@ -164,8 +161,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/CodingIsFun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="659" column="8" selection-start-line="659" selection-start-column="8" selection-end-line="659" selection-end-column="8" />
+        <state relative-caret-position="243">
+          <caret line="707" column="27" selection-start-line="707" selection-start-column="27" selection-end-line="707" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
