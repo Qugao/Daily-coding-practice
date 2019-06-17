@@ -3,6 +3,7 @@ import org.omg.CORBA.INTERNAL;
 import javax.swing.tree.TreeNode;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class CodingIsFun {
@@ -20,6 +21,54 @@ public class CodingIsFun {
           this.val = val;
         }
   }
+    public static class Element {
+        public String str;
+        public int time;
+        public Element(String str, int time) {
+            this.str = str;
+            this.time = time;
+        }
+    }
+
+    public String mostCommonWord(String paragraph, String[] banned) {
+       String[] str = paragraph.replaceAll("\\W+" , " ").toLowerCase().split("\\s+");
+       Map<String, Integer> freqMap = new HashMap<>();
+       Set<String> hashSet = new HashSet<>(Arrays.asList(banned));
+
+       for (String s : str) {
+           if (!hashSet.contains(s)) {
+               Integer freq = freqMap.get(s);
+               if (freq == null) {
+                   freqMap.put(s, 1);
+               } else {
+                   freqMap.put(s, freq + 1);
+               }
+           }
+       }
+
+
+       return Collections.max(freqMap.entrySet(), Map.Entry.comparingByValue()).getKey();
+    }
+
+    public int[] prisonAfterNDays(int[] cells, int N) {
+        for (int i = 0; i < N; i++) {
+            cells = prisonAfterNDays(cells);
+        }
+        return cells;
+    }
+
+    public int[] prisonAfterNDays(int[] cells) {
+        for (int i = 1; i < cells.length; i++) {
+            if (cells[i] == 0 && cells[i - 1] == 0 && cells[i + 1] == 0) {
+                cells[i] = 1;
+            } else if (cells[i] == 0 && cells[i - 1] == 1 && cells[i + 1] == 1) {
+                cells[i] = 1;
+            } else {
+                cells[i] = 0;
+            }
+        }
+        return cells;
+    }
     //lc #215
     public static int findKthLargest(int[] nums, int k) {
         if (nums.length <= 1) {
@@ -597,7 +646,7 @@ public class CodingIsFun {
         TreeNode left = mergeTrees(t1.left, t2.left);
         TreeNode rihgt = mergeTrees(t1.right, t2.right);
 
-        t1.key += t2.key;
+        t1.val += t2.val;
 
         return t1;
     }
@@ -611,7 +660,7 @@ public class CodingIsFun {
             return false;
         }
 
-        if (p.key != q.key) {
+        if (p.val != q.val) {
             return false;
         }
 
@@ -628,9 +677,9 @@ public class CodingIsFun {
             return root;
         }
 
-        if (one.key < root.key && two.key < root.key) {
+        if (one.val < root.val && two.val < root.val) {
             return lowestCommonAncestor(root.left, one, two);
-        } else if (one.key > root.key && two.key > root.key) {
+        } else if (one.val > root.val && two.val > root.val) {
             return lowestCommonAncestor(root.right, one, two);
         } else {
             return root;
@@ -691,25 +740,11 @@ public class CodingIsFun {
         return max;
     }
 
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder.length == 0) {
-            return null;
-        }
-        if (preorder.length == 1) {
-            new TreeNode(preorder[0]);
-        }
-
-
-
-
-    }
 
     public boolean isValidBST(TreeNode root, int low, int high) {
         if (root == null) {
             return false;
         }
-        List<List<Integer>> a = new LinkedList<>();
-        a.add
 
         if (root.right.val < root.val) {
             return false;
@@ -723,15 +758,113 @@ public class CodingIsFun {
 
     }
 
+    public int countNodes(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int num = 1;
+        TreeNode right = root.right;
+        TreeNode left = root.left;
+
+        while (right != null) {
+            right = right.right;
+            left = left.left;
+            num += 1;
+        }
+
+
+        return num + ((left != null)?countNodes(root.right):countNodes(root.left));
+
+    }
+
+    public int[] productExceptSelf(int[] nums) {
+        int[] answer = new int[nums.length];
+        answer[0] = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            answer[i] = nums[i - 1] * answer[i - 1];
+        }
+
+        int rightSide = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            answer[i] *= rightSide;
+            rightSide *= nums[i];
+        }
+
+        return answer;
+    }
+
+    public int[][] kClosest(int[][] points, int K) {
+        PriorityQueue<int[]> heap = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                int c1 = o1[0] * o1[0] + o1[1] * o1[1];
+                int c2 = o2[0] * o2[0] + o2[1] * o2[1];
+                if (c1 == c2) {
+                    return 0;
+                }
+                return  c1 < c2 ? 1 : -1;
+            }
+        });
+
+        int[][] result = new int[K][2];
+        for (int i = 0; i < points.length; i++) {
+            heap.offer(points[i]);
+            if (heap.size() > K) {
+                heap.poll();
+            }
+        }
+
+        for (int i = K; K > 0; i--) {
+            result[i] = heap.poll();
+        }
+
+
+        return result;
+    }
+
+    public int numJewelsInStones(String J, String S) {
+        Set<Character> set = new HashSet<>();
+        for (int i = 0; i < J.length(); i++) {
+            set.add(J.charAt(i));
+        }
+        char[] str = S.toCharArray();
+        int count = 0;
+
+        for (Character c : str) {
+            if (set.contains(c)) {
+                count++;
+               // set.remove(c);
+            }
+        }
+
+        return count;
+    }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List> map = new HashMap<>();
+
+        for (String str : strs) {
+            char[] tmp = str.toCharArray();
+            Arrays.sort(tmp);
+            String key = Arrays.toString(tmp);
+
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList());
+            } else {
+                map.get(key).add(str);
+            }
+        }
+
+        return new ArrayList<>(map.values());
+    }
 
     public static void main(String[] args) {
-        int[] a = {10,9,2,5,3,7,101,18};
-      //  System.out.println(lengthOfLIS(a));
-        int[] b = {1,1,1,1,1};
-        List<Integer> c = new ArrayList<>();
-        for (int i = 0; i < b.length; i++) {
-            c.add(b[i]);
-        }
-        c.set(0, 0);
+        int[] a = {1,1};
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        heap.add(a[0]);
+        heap.add(a[1]);
+        System.out.println(heap);
+
     }
 }
