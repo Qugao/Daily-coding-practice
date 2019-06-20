@@ -856,15 +856,157 @@ public class CodingIsFun {
             }
         }
 
-        return new ArrayList<>(map.values());
+        return new ArrayList(map.values());
     }
 
+    public static List<String> letterCombinations(String digits) {
+        List<String> ans = new ArrayList<>();
+
+        if(digits == null || digits.length() == 0) {
+            return ans;
+        }
+
+        char[][] map = new char[8][];
+        map[0]="abc".toCharArray();
+        map[1]="def".toCharArray();
+        map[2]="ghi".toCharArray();
+        map[3]="jkl".toCharArray();
+        map[4]="mno".toCharArray();
+        map[5]="pqrs".toCharArray();
+        map[6]="tuv".toCharArray();
+        map[7]="wxyz".toCharArray();
+
+        char[] ca = digits.toCharArray();
+        ans.add("");
+        for (char c : ca) {
+            System.out.println("----------");
+            ans = expand(map[c - '2'], ans);
+        }
+        return ans;
+    }
+
+    public static List<String> expand(char[] map, List<String> ans) {
+        List<String> next = new ArrayList<String>();
+        for (String s : ans) {
+            System.out.println("1: " + s);
+            for (char c : map) {
+                System.out.println("2: " + c);
+                next.add(s + c);
+                System.out.println(s + c + "\n--------------");
+            }
+        }
+        return next;
+    }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if (wordDict.isEmpty() || s.isEmpty()) {
+            return false;
+        }
+
+        if (wordDict.size() == 1 && !s.equals(wordDict.get(0))) {
+            return false;
+        }
+
+        int visted = 0;
+
+        for (int i = 0; i < wordDict.size() - 1; i++) {
+            if (wordDict.get(i).length() > s.length()) {
+                break;
+            }
+            int len = wordDict.get(i).length() - 1;
+            int cur = visted + len;
+            if (s.charAt(cur + 1) != wordDict.get(i + 1).charAt(0)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int[] max = new int[nums.length];
+        int index = 0;
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]) {
+                deque.pollLast();
+            }
+            if (!deque.isEmpty() && deque.peekLast() <= i - k) {
+                deque.pollFirst();
+            }
+            deque.offerLast(i);
+
+            if (i > k - 1) {
+                max[index++] = nums[deque.peekFirst()];
+            }
+        }
+        return Arrays.copyOfRange(max, 0, index);
+    }
+
+    public int[][] merge(int[][] intervals) {
+        if (intervals.length == 1) {
+            return intervals;
+        }
+
+        int[][] ans = new int[intervals.length][2];
+
+        if (intervals.length == 0) {
+            return ans;
+        }
+
+        if (intervals.length == 2) {
+            int[] tmp = new int[2];
+            if (intervals[1][0] <= intervals[0][1]) {
+                tmp[0] = intervals[0][0];
+                tmp[1] = intervals[1][1];
+
+                ans[0] = tmp;
+                return Arrays.copyOfRange(ans, 0, 1);
+            }
+        }
+
+        int index = 0;
+
+        for (int i = 0; i < intervals.length; i++) {
+            int[] tmp = new int[2];
+
+            if (intervals[i + 1][0] <= intervals[i][1]) {
+                tmp[0] = intervals[i][0];
+                tmp[1] = intervals[i + 1][1];
+                ans[index++] = tmp;
+                i++;
+            } else {
+                ans[index++] = intervals[i];
+            }
+
+            if (i + 1 >= intervals.length - 1) {
+                ans[index++] = intervals[i + 1];
+                break;
+            }
+
+        }
+
+        return Arrays.copyOfRange(ans, 0, index);
+    }
+
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] - nums[i - 1] >= 2) {
+                return nums[i] - 1;
+            }
+        }
+        return -1;
+    }
+
+
     public static void main(String[] args) {
-        int[] a = {1,1};
-        PriorityQueue<Integer> heap = new PriorityQueue<>();
-        heap.add(a[0]);
-        heap.add(a[1]);
-        System.out.println(heap);
+
+        System.out.println('z'-'a');
+        String a = "";
+        List<Integer> index = new ArrayList<>();
+        index.remove()
+        index.re
 
     }
 }

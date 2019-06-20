@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c687f4ff-6dac-4f71-aedc-8bf2909c0e0c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Daily-coding-practice/CodingIsFun.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CodingIsFun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodingIsFun.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,10 +16,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CodingIsFun.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="845" column="8" selection-start-line="845" selection-start-column="8" selection-end-line="845" selection-end-column="8" />
+            <state relative-caret-position="531">
+              <caret line="1008" column="17" selection-start-line="1008" selection-start-column="17" selection-end-line="1008" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#23005#23013#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,10 +53,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="685" />
-    <option name="y" value="10" />
-    <option name="width" value="1103" />
-    <option name="height" value="862" />
+    <option name="x" value="-1" />
+    <option name="width" value="1275" />
+    <option name="height" value="914" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -70,7 +67,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560715765631" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560987831326" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
@@ -122,15 +119,15 @@
       <workItem from="1559683252693" duration="2824000" />
       <workItem from="1560207595524" duration="3332000" />
       <workItem from="1560386698225" duration="5442000" />
-      <workItem from="1560541073504" duration="7273000" />
+      <workItem from="1560541073504" duration="21461000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67882000" />
+    <option name="totallyTimeSpent" value="82070000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="685" y="10" width="1103" height="862" extended-state="0" />
+    <frame x="-1" y="0" width="1275" height="914" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
@@ -142,7 +139,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.7330508" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18734793" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -152,7 +149,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32965517" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32850242" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -170,10 +167,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/CodingIsFun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="845" column="8" selection-start-line="845" selection-start-column="8" selection-end-line="845" selection-end-column="8" />
+        <state relative-caret-position="531">
+          <caret line="1008" column="17" selection-start-line="1008" selection-start-column="17" selection-end-line="1008" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#23005#23013#0" expanded="true" />
           </folding>
         </state>
       </provider>
